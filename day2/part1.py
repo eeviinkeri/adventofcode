@@ -1,4 +1,4 @@
-def get_min_max_num_letters(num_range):
+def get_min_max_num(num_range):
     num_range_list = num_range.split('-')
     return int(num_range_list[0]), int(num_range_list[1])
  
@@ -10,7 +10,7 @@ def parse_elements(item):
 
 def validate(item):
     num_range, letter, password = parse_elements(item)
-    min_num, max_num = get_min_max_num_letters(num_range)
+    min_num, max_num = get_min_max_num(num_range)
     letter_count = password.count(letter)
     if min_num <= letter_count <= max_num:
         return True
