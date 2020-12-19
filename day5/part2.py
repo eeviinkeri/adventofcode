@@ -3,8 +3,11 @@ from part1 import read_file_to_list, get_all_seat_ids
 
 def find_my_seat(seat_ids):
     for id in range(len(seat_ids)):
-        if (id + 1) in seat_ids and (id - 1) in seat_ids and id not in seat_ids:
-            return id
+        if (
+            (id + 1) in seat_ids and
+            (id - 1) in seat_ids and
+            id not in seat_ids
+            ): return id
 
 
 def main():
