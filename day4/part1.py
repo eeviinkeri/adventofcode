@@ -15,7 +15,6 @@ def read_file_to_list(filename):
 
 def main():
     data = read_file_to_list('input4.txt')
-    print(data)
 
     valid_entries = 0
     for passport in data:
