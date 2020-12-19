@@ -30,19 +30,22 @@ def get_seat_id(boarding_pass):
     return row * 8 + seat
 
 
+def get_all_seat_ids(boarding_passes):
+    seat_ids = list()
+    for boarding_pass in boarding_passes:
+        seat_id = get_seat_id(boarding_pass)
+        seat_ids.append(seat_id)
+    return seat_ids
+
+
 def read_file_to_list(filename):
     with open(filename, "r") as f:
         return [line.strip("\n") for line in f]
 
 
 def main():
-    data = read_file_to_list('input5.txt')
-
-    seat_ids = list()
-    for boarding_pass in data:
-        seat_id = get_seat_id(boarding_pass)
-        seat_ids.append(seat_id)
-    
+    boarding_passes = read_file_to_list('input5.txt')
+    seat_ids = get_all_seat_ids(boarding_passes)
     max_seat_id = max(seat_ids)
     print(max_seat_id)
             
