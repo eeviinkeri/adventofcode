@@ -20,7 +20,7 @@ def get_all_outer_bags(bag_list, rules, outer_bags):
 
 def read_lines_in_file_to_list(filename: str):
     with open(filename, "r") as f:
-        return [line.strip("\n") for line in f]
+        return [line.strip(".\n") for line in f]
 
 
 def main():
