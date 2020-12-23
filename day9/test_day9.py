@@ -1,5 +1,6 @@
 import unittest
 from part1 import check_valid_numbers
+from part2 import find_encryption_weakness
 
 
 data = [
@@ -25,10 +26,13 @@ data = [
         576
         ]
 
-class TestValidationFunctions(unittest.TestCase):
+class TestFunctions(unittest.TestCase):
 
     def test_check_valid_numbers(self):
         self.assertEqual(check_valid_numbers(data, 5), 127)
+
+    def test_find_encryption_weakness(self):
+        self.assertEqual(find_encryption_weakness(data, 127), 62)
 
 
 if __name__ == '__main__':
