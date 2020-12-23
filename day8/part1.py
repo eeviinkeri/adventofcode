@@ -14,16 +14,13 @@ def accumulate(argument, accumulator):
     return accumulator 
 
 
-def find_start_of_infinite_loop(instructions, index, instruction_list, accumulator):
-    instruction = instructions[index]
-    operation = instruction.split(" ")[0]
-    argument = instruction.split(" ")[1]
+def parse_instruction(instruction):
+    instruction_split = instruction.split(" ")
+    return instruction_split[0], instruction_split[1]
 
-    if (index, instruction) in instruction_list:
-        return accumulator
-    
-    instruction_list.append((index, instruction))
 
+def run_instruction(instruction, index, accumulator):
+    operation, argument = parse_instruction(instruction)
     if operation == 'nop':
         index += 1
     if operation == 'acc':
@@ -31,8 +28,17 @@ def find_start_of_infinite_loop(instructions, index, instruction_list, accumulat
         index += 1
     if operation == 'jmp':
         index = jump(argument, index)
+    return index, accumulator
 
-    return find_start_of_infinite_loop(instructions, index, instruction_list, accumulator)
+
+def find_start_of_infinite_loop(instructions, index, index_list, accumulator):
+    instruction = instructions[index]
+    if index in index_list:
+        return accumulator
+
+    index_list.append(index)
+    index, accumulator = run_instruction(instruction, index, accumulator)
+    return find_start_of_infinite_loop(instructions, index, index_list, accumulator)
 
 
 def read_lines_in_file_to_list(filename: str):
