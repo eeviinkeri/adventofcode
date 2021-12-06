@@ -21,7 +21,7 @@ def read_lines_in_file_to_list_of_integers(filename: str):
 def main():
     measurements = read_lines_in_file_to_list_of_integers('day1/input.txt')
     increased = get_num_of_increased_measurements(measurements)
-    print(increased)
+    print(f'The depth measurement increases {increased} times.')
 
 
 if __name__ == "__main__":
