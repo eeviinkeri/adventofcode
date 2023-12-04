@@ -1,3 +1,4 @@
+import os
 import re
 
 
@@ -40,7 +41,7 @@ def map_words_to_numbers(digit_list):
 
 
 def main():
-    filename = "/Users/eevi-inkeri.laakso/github/adventofcode/2023/data/input.txt"
+    filename = f"{os.getcwd()}/data/input1.txt"
     lines = read_file_to_list(filename)
 
     # Part 1
